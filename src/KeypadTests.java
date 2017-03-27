@@ -63,7 +63,7 @@ public class KeypadTests {
 		assertEquals(testList, tester.letterCombinations("1010"));
 		assertEquals(testList, tester.letterCombinations("hello"));
 	}
-	
+
 	@Test
 	public void shouldReturnCorrectDictionaryWords() {
 		// assert statements

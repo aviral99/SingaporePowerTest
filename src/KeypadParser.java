@@ -50,10 +50,14 @@ public class KeypadParser {
 			}
 		}
 	}
+
 	/**
 	 * 
-	 * @param number (String) The key sequence for which the dictionary words are required.
-	 * @return (ArrayList<String>) Returns the list of words which matched the sequence and are given in dictionary.
+	 * @param number
+	 *            (String) The key sequence for which the dictionary words are
+	 *            required.
+	 * @return (ArrayList<String>) Returns the list of words which matched the
+	 *         sequence and are given in dictionary.
 	 */
 	public ArrayList<String> wordsFromDictionary(String number) {
 		ArrayList<String> wordsList = this.letterCombinations(number);
@@ -144,7 +148,7 @@ public class KeypadParser {
 				return "-1";
 			press += charPress + 1;
 		}
-		return press == 0 ? "-1" : ""+press;
+		return press == 0 ? "-1" : "" + press;
 	}
 
 	/**
