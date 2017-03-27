@@ -32,5 +32,20 @@ public class KeypadTests {
 		assertEquals("-1", tester.wordToNumber("-123"));
 		assertEquals("-1", tester.wordToNumber("!@#$%"));
 	}
+	@Test
+	public void shouldReturnCorrectLetterCombinations() {
+		// assert statements
+		ArrayList<String> testList = new ArrayList<String>();
+		testList.add("ad");
+		testList.add("ae");
+		testList.add("af");
+		testList.add("bd");
+		testList.add("be");
+		testList.add("bf");
+		testList.add("cd");
+		testList.add("ce");
+		testList.add("cf");
+		assertEquals(testList, tester.letterCombinations("23"));
+	}
 
 }

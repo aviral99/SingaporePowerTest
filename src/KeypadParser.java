@@ -38,6 +38,35 @@ public class KeypadParser {
 	/**
 	 * 
 	 * @param (String)
+	 *            The key sequence for which the letter combinations are
+	 *            required.
+	 * @return (ArrayList<String>) List of strings defining all the possible
+	 *         letter combinations with the given key presses.Returns empty list
+	 *         if empty sequence or corrupted sequence is given.
+	 */
+	public ArrayList<String> letterCombinations(String number) {
+		number = number.trim();
+		ArrayList<String> combinations = new ArrayList<String>();
+			// iterate over every character in the given sequence.
+		combinations = keypad.get(Integer.parseInt(""+number.charAt(0)));
+		number=number.substring(1, number.length());
+			for (char ch : number.toCharArray()) {
+				String key = String.valueOf(ch);
+				ArrayList<String> temp = new ArrayList<String>();
+				ArrayList<String> key_char = keypad.get(Integer.parseInt(key));
+					for (String str1 : combinations) {
+						for (String str2 : key_char) {
+							temp.add(str1.concat(str2));
+						}
+					}
+				combinations = (ArrayList<String>) temp.clone();
+			}
+		return combinations;
+	}
+
+	/**
+	 * 
+	 * @param (String)
 	 *            The word for which the number representation is needed.
 	 * @return (String) The number which the word represents. -1 if any
 	 *         character in the word is not in the keypad. -Runs in O(n) time
