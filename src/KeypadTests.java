@@ -19,7 +19,6 @@ public class KeypadTests {
 		assertEquals("-1", tester.numberOfKeyPresses("123"));
 		assertEquals("-1", tester.numberOfKeyPresses("-123"));
 		assertEquals("-1", tester.numberOfKeyPresses("!@#$%"));
-		
 	}
 
 	@Test
@@ -32,6 +31,7 @@ public class KeypadTests {
 		assertEquals("-1", tester.wordToNumber("-123"));
 		assertEquals("-1", tester.wordToNumber("!@#$%"));
 	}
+
 	@Test
 	public void shouldReturnCorrectLetterCombinations() {
 		// assert statements
@@ -63,5 +63,34 @@ public class KeypadTests {
 		assertEquals(testList, tester.letterCombinations("1010"));
 		assertEquals(testList, tester.letterCombinations("hello"));
 	}
-
+	
+	@Test
+	public void shouldReturnCorrectDictionaryWords() {
+		// assert statements
+		ArrayList<String> testList = new ArrayList<String>();
+		testList.add("freedom");
+		assertEquals(testList, tester.wordsFromDictionary("3733366"));
+		testList = new ArrayList<String>();
+		testList.add("bell");
+		testList.add("cell");
+		assertEquals(testList, tester.wordsFromDictionary("2355"));
+		testList = new ArrayList<String>();
+		testList.add("gone");
+		testList.add("good");
+		testList.add("goof");
+		testList.add("home");
+		testList.add("hone");
+		testList.add("hood");
+		testList.add("hoof");
+		assertEquals(testList, tester.wordsFromDictionary("4663"));
+		testList = new ArrayList<String>();
+		assertEquals(testList, tester.wordsFromDictionary("123456789"));
+		testList = new ArrayList<String>();
+		testList.add("mice");
+		testList.add("nice");
+		assertEquals(testList, tester.wordsFromDictionary("6423"));
+		testList = new ArrayList<String>();
+		testList.add("astonishment");
+		assertEquals(testList, tester.wordsFromDictionary("278664746368"));
+	}
 }

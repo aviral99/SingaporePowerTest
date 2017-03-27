@@ -9,11 +9,27 @@ public class KeypadParser {
 
 	private ArrayList<ArrayList<String>> keypad;
 	private HashMap<String, Integer> characterPosition;
+	private TreeSet<String> dictionary;
 
 	KeypadParser(String filename) {
 		initKeypad();
+		loadDictionary(filename);
 	}
-	
+
+	private void loadDictionary(String filename) {
+		dictionary = new TreeSet<String>();
+		Scanner sc = null;
+		try {
+			sc = new Scanner(new File(filename));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		while (sc.hasNextLine()) {
+			String word = sc.nextLine().trim().replace("\\", "");
+			dictionary.add(word);
+		}
+	}
+
 	private void initKeypad() {
 		keypad = new ArrayList<ArrayList<String>>();
 		characterPosition = new HashMap<String, Integer>(26, 1);
@@ -34,7 +50,22 @@ public class KeypadParser {
 			}
 		}
 	}
-	
+	/**
+	 * 
+	 * @param number (String) The key sequence for which the dictionary words are required.
+	 * @return (ArrayList<String>) Returns the list of words which matched the sequence and are given in dictionary.
+	 */
+	public ArrayList<String> wordsFromDictionary(String number) {
+		ArrayList<String> wordsList = this.letterCombinations(number);
+		ArrayList<String> verifiedWordList = new ArrayList<String>();
+		for (String str : wordsList) {
+			if (dictionary.contains(str)) {
+				verifiedWordList.add(str);
+			}
+		}
+		return verifiedWordList;
+	}
+
 	/**
 	 * 
 	 * @param (String)
@@ -75,7 +106,6 @@ public class KeypadParser {
 		}
 		return combinations;
 	}
-
 
 	/**
 	 * 
