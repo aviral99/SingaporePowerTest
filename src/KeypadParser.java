@@ -47,22 +47,35 @@ public class KeypadParser {
 	public ArrayList<String> letterCombinations(String number) {
 		number = number.trim();
 		ArrayList<String> combinations = new ArrayList<String>();
+		if (number.length() > 0) {
 			// iterate over every character in the given sequence.
-		combinations = keypad.get(Integer.parseInt(""+number.charAt(0)));
-		number=number.substring(1, number.length());
 			for (char ch : number.toCharArray()) {
+
+				// Return if the character is not a key between integers 0 and 9
+				if (ch < 48 || ch > 57)
+					return new ArrayList<String>();
+
 				String key = String.valueOf(ch);
 				ArrayList<String> temp = new ArrayList<String>();
 				ArrayList<String> key_char = keypad.get(Integer.parseInt(key));
+				if (combinations.size() == 0) {
+					for (String str2 : key_char) {
+						temp.add(str2);
+					}
+				} else {
 					for (String str1 : combinations) {
 						for (String str2 : key_char) {
 							temp.add(str1.concat(str2));
 						}
 					}
-				combinations = (ArrayList<String>) temp.clone();
+				}
+				if (temp.size() > 0)
+					combinations = (ArrayList<String>) temp.clone();
 			}
+		}
 		return combinations;
 	}
+
 
 	/**
 	 * 

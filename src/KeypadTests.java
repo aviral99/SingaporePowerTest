@@ -36,6 +36,14 @@ public class KeypadTests {
 	public void shouldReturnCorrectLetterCombinations() {
 		// assert statements
 		ArrayList<String> testList = new ArrayList<String>();
+		testList.add("w");
+		testList.add("x");
+		testList.add("y");
+		testList.add("z");
+		assertEquals(testList, tester.letterCombinations("9"));
+		assertEquals(testList, tester.letterCombinations("09"));
+		assertEquals(testList, tester.letterCombinations("90"));
+		testList = new ArrayList<String>();
 		testList.add("ad");
 		testList.add("ae");
 		testList.add("af");
@@ -46,6 +54,14 @@ public class KeypadTests {
 		testList.add("ce");
 		testList.add("cf");
 		assertEquals(testList, tester.letterCombinations("23"));
+		assertEquals(testList, tester.letterCombinations("002003"));
+		assertEquals(testList, tester.letterCombinations("002003000"));
+		assertEquals(testList, tester.letterCombinations("1231110"));
+		assertEquals(testList, tester.letterCombinations("123"));
+		testList = new ArrayList<String>();
+		assertEquals(testList, tester.letterCombinations("000"));
+		assertEquals(testList, tester.letterCombinations("1010"));
+		assertEquals(testList, tester.letterCombinations("hello"));
 	}
 
 }
